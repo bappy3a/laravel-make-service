@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
+use Illuminate\Console\GeneratorCommand;
 
-class InterfaceMakeCommand extends Command
+class InterfaceMakeCommand extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.

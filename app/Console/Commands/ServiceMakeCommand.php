@@ -3,26 +3,17 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Console\Commands\Traits\ServiceProviderInjector;
+use Illuminate\Support\Facades\Artisan;
 
 class ServiceMakeCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    use ServiceProviderInjector;
+
     protected $signature = 'make:service {name}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Create a new Service class';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
         $codeToAdd = "\n\t\t\$this->app->bind(\n".
@@ -38,7 +29,7 @@ class ServiceMakeCommand extends Command
             'name' => $this->argument('name').'Interface',
         ]);
 
-        return parent::handle();
+        //return parent::handle();
     }
 
     protected function getStub()

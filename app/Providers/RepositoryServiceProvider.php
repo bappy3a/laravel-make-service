@@ -12,6 +12,36 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
+
+		$this->app->bind(
+			\App\Interfaces\ProductServiceInterface::class,
+			\App\Services\ProductService::class
+		);
     }
 
     /**
