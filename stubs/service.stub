@@ -1,0 +1,65 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Interfaces\{{ class }}Interface;
+
+class {{ class }} implements {{ class }}Interface
+{
+    public function allPaginate($perPage){
+        return OnboardingSlider::latest()->paginate($perPage);
+    }
+    public function all(){
+        $datas = OnboardingSlider::latest()->get();
+        return $datas;
+    }
+    public function store($request_data){
+
+        $slider = OnboardingSlider::create([
+            'title' => $request_data->title,
+            'title_bn' => $request_data->title_bn,
+            'description' => $request_data->description,
+            'description_bn' => $request_data->description_bn,
+        ]);
+
+        return $slider;
+    }
+
+
+    public function update($data, $id){
+        $slider = $this->show($id);
+         $slider->update([
+            'title' => $request_data->title,
+            'title_bn' => $request_data->title_bn,
+            'description' => $request_data->description,
+            'description_bn' => $request_data->description_bn,
+        ]);
+
+        return $slider;
+    }
+
+    public function show($id){
+        return OnboardingSlider::findOrFail($id);
+    }
+
+    public function delete($id){
+        $data = $this->show($id);
+        if(!$data){
+            return false;
+        }
+        $data->delete();
+        return true;
+    }
+
+
+    public function status($id){
+        $data = $this->show($id);
+        if($data->is_active == 1){
+            $data->is_active = 0;
+        }elseif($data->is_active == 0){
+            $data->is_active = 1;
+        }
+        $data->save();
+        return $data;
+    }
+}
